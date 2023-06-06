@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="sidemenu">
+        <a href="index.html"><img id="logo" src="/PHOTO/logo.png"></a>
+        <hr />
+    <ul>
+        <li><a href="index.html">Home</a></li><br>
+        <li><a href="explanation.html">What is liminal space?</a></li><br>
+        <li><a href="#contact">Gallery</a></li><br>
+        <li><a href="#about">Guestbooks</a></li>
+      </ul>
+    </div>
+
+    <div id="content">
+        
+<div class="container">
+
+    <section class="title-container">
+        <center>
+            <img src="/static/img/logo.jpeg" width="128px" height="128px"/>
+        </center>
+        <marquee><p class="no-margin">기억속에 편히 잠드소서....</p></marquee>
+        <center>
+            <img src="/static/img/memorial.png" width="96px"/>
+        </center>
+    </section>
+
+    <section class="new-guest-container">
+
+        <form method="post" action="/guestbook/add" onsubmit="return FormSubmit()" style="margin: 0">
+            <input type="hidden" name="csrfmiddlewaretoken" value="eNQsOkGRLFutWoTxh9U8jIBq3VPgfnBweDerEVdQ0rPeSgvkywbsfsvkgapWCpWR">
+            <div class="name-wrap">
+                <center>
+                    <input type="text" id="name" name="name" value="" required="" placeholder="이름 Name">
+                </center>
+
+            </div>
+
+            <div class="textbox">
+                <textarea name="content" rows="5" id="content" spellcheck="false" required="" placeholder="故플래시를 위한 조의문을 써주세요."></textarea>
+            </div>
+
+            <div class="g-recaptcha" data-sitekey="6LeNDvUdAAAAAO7cOa0AbHByxtoex-o_GyBRzY9i"></div>
+
+            <div class="submit-wrap">
+                <button type="submit" class="ccz-btn default">글남기기</button>
+            </div>
+        </form>
+    </section>
+
+<!--스팸 방지 추가..?-->
+<script async src="https://www.google.com/recaptcha/api.js"></script>
+<script>
+// How this code snippet works:
+// This logic overwrites the default behavior of `grecaptcha.ready()` to
+// ensure that it can be safely called at any time. When `grecaptcha.ready()`
+// is called before reCAPTCHA is loaded, the callback function that is passed
+// by `grecaptcha.ready()` is enqueued for execution after reCAPTCHA is
+// loaded.
+if(typeof grecaptcha === 'undefined') {
+grecaptcha = {};
+}
+grecaptcha.ready = function(cb){
+if(typeof grecaptcha === 'undefined') {
+  // window.__grecaptcha_cfg is a global variable that stores reCAPTCHA's
+  // configuration. By default, any functions listed in its 'fns' property
+  // are automatically executed when reCAPTCHA loads.
+  const c = '___grecaptcha_cfg';
+  window[c] = window[c] || {};
+  (window[c]['fns'] = window[c]['fns']||[]).push(cb);
+} else {
+  cb();
+}
+}
+
+// Usage
+grecaptcha.ready(function(){
+grecaptcha.render("container", {
+  sitekey: "6LeNDvUdAAAAAO7cOa0AbHByxtoex-o_GyBRzY9i"
+});
+});
+
+function FormSubmit() { 
+  if (grecaptcha.getResponse() == ""){ 
+      alert("The comment is blocked."); 
+      return false; 
+      } else { 
+          return WordCheck();
+        }
+}
+
+function WordCheck() {
+
+    var text_value = document.getElementById("content").value;
+    if (text_value.includes("href") || text_value.includes("[/url]") || text_value.includes("</a>") || text_value.includes("url") === true) {
+        alert("You cannot add urls to the comment.");
+        return false;
+    } else {
+        return true;
+    }
+}
+</script>
+
+    <section class="guestbook-container">
+        
+        <article class="guestbook-wrap">
+            <article class="guestbook-name">
+                Peatixwam
+            </article>
+    </div>
+</body>
+</html>

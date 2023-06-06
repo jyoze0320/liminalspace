@@ -1,0 +1,47 @@
+a:link {
+    color : black;
+    text-decoration: none;
+  }
+a:visited {
+    color : black;
+    text-decoration: none;
+  }
+a:hover {
+    color : wheat;
+    text-decoration: underline;
+  }
+a:active {
+    color : red;
+    text-decoration: none;
+  }
+
+body{
+    display: flex; 
+    background-color: white; 
+    font-family: Bodoni MT;
+}
+
+hr{
+    width: 100%;
+}
+
+#sidemenu{
+  color: black;
+  height : auto;
+  border-right : solid black;
+  padding: 10px;
+  font-size: 1.3em;
+}
+
+#logo{
+    width: 300px;
+    height: auto;
+}
+
+#content{
+    padding : 20px;
+}
+
+#explanation{
+    white-space:pre-line;
+}
